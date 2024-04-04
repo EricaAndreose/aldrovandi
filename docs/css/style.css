@@ -1,3 +1,7 @@
+@font-face {
+  font-family: aldine;
+  src: url('Aldine 721 BT 400.ttf');
+}
 body {
   font-family: "Poppins", sans-serif;
   color: #0c0c0c;
@@ -213,6 +217,7 @@ a:focus {
   position: relative;
   z-index: 2;
   color: #3b3a3a;
+  background-image: url('https://ieb-assets.s3-eu-west-1.amazonaws.com/files/cache/f1/e7/aldrovandi-6-immagini.jpeg/aldrovandi-6-immagini_960x0_cb99137bd0fd519ae2d7d78ffb23e24b.jpg');
   padding-bottom: 90px;
 }
 
@@ -224,6 +229,9 @@ a:focus {
 
 .slider_section .detail_box {
   color: #000000;
+  background: #88888878;
+  border-radius: 2rem;
+ padding:2%;
 }
 
 .slider_section .detail_box h1 {
