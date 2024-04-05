@@ -1,9 +1,9 @@
 @font-face {
-  font-family: aldine;
-  src: url('Aldine 721 BT 400.ttf');
+  font-family: cinque;
+  src: url('1550.ttf');
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: cinque;
   color: #0c0c0c;
   background-color: #ffffff;
 }
@@ -69,6 +69,10 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #8080801f;
+  background-image: url("Beast.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .sub_page .hero_area {
@@ -95,7 +99,7 @@ body {
 }
 
 .custom_nav-container .navbar-nav .nav-item.active .nav-link, .custom_nav-container .navbar-nav .nav-item:hover .nav-link {
-  background-color: #4b208c;
+  background-color: #526731;
   color: #ffffff;
 }
 
@@ -214,11 +218,12 @@ a:focus {
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
+          
   position: relative;
   z-index: 2;
   color: #3b3a3a;
   padding-bottom: 90px;
+
 }
 
 .slider_section .row {
@@ -236,6 +241,8 @@ a:focus {
 .slider_section .detail_box h1 {
   text-transform: uppercase;
   font-weight: bold;
+  background-color: #e2d5acbf;
+  
 }
 
 .slider_section .detail_box p {
@@ -423,6 +430,12 @@ a:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.a img {
+  height: 300px;
+  display: block;
+  margin: 0 auto;
 }
 
 .about_section .img_container .img-box {
