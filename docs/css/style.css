@@ -331,7 +331,7 @@ a:focus {
   width: 50%;
 }
 
-#s1 {
+.s1 {
   height: 40vh !important;
   
 }
@@ -747,14 +747,14 @@ figcaption {
   color: #222222;
 }
 
-#containerimg {
+.containerimg {
   display: flex;
   flex-direction: row;
   margin:3% 0;
   justify-content: space-evenly;
 }
 
-#containerimg img {
+.containerimg img {
   height: 400px;
   float: unset;
 }
