@@ -115,7 +115,7 @@
           <div class="service_container">
             <p>
               One of the main manuscript funds possessed by the University of
-              Bologna is the one of Ulisse Aldrovandi, a famous naturalist who
+              Bologna is the one of <a href="https://it.wikipedia.org/wiki/Ulisse_Aldrovandi">Ulisse Aldrovandi</a>, a famous naturalist who
               lived in the 16th century and who is considered to be the father
               of natural history studies. <br />
               Prof. Monica Azzolini, one of the main experts of Aldrovandi
@@ -153,32 +153,43 @@
         </div>
         <div class="container1">
           <div class="container2">
-            <div class="service_container">
+            <div class="service_container" id="s1">
               <h3>Ms.99</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste
-                id deserunt provident perspiciatis, vel fugit temporibus officia
-                accusamus tenetur deleniti, a saepe nesciunt, ullam explicabo
-                rem! Porro sunt fuga officiis.
-              </p>
+              <blockquote>
+                "Ulisse Aldrovandi proposes an iconographic project of his own
+                design for his countryside villa. The manuscript is divided into
+                two sections. The first, and most consistent section, deals with
+                the first room of the villa, which is decorated with scenes from
+                Homer’s Odyssey. The second section of the manuscript is
+                dedicated to three spaces decorated with friezes containing
+                emblems depicting animals and will serve as the principal focus
+                of the present study. It is argued that the representations of
+                these animals are closely paralleled in the watercolor plates
+                that accompany Aldrovandi’s naturalistic treatises." (<a
+                  href="https://aldrovandiana.it/article/view/19/14"
+                  >Corrain, 2022</a
+                >)
+              </blockquote>
             </div>
             <div class="service_container">
               <img src="BUB_Ms0124-099_000006-c.x1yr.jpg" />
             </div>
+            <figcaption>Picture taken from AMS Historica</figcaption>
           </div>
           <div class="container2">
-            <div class="service_container">
+            <div class="service_container" id="s1">
               <h3>Calzolari's letters</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste
-                id deserunt provident perspiciatis, vel fugit temporibus officia
-                accusamus tenetur deleniti, a saepe nesciunt, ullam explicabo
-                rem! Porro sunt fuga officiis.
+                Pages 26r to 72v of Manuscript 38/2.3 are dedicated to
+                transcriptions of letters sent by Francesco Calzolari. These
+                letters were sent from Verona and are dated from 25 July 1554 to
+                12 January 1573.
               </p>
             </div>
             <div class="service_container">
               <img src="default.jpg" />
             </div>
+            <figcaption>Picture taken from AMS Historica</figcaption>
           </div>
         </div>
       </div>
@@ -218,6 +229,11 @@
             epochs to 100 because we were dealing with a smaller number of words
             and our models were already relying on a starting one.
           </p>
+          <div id="containerimg">
+            <img src="Screenshot 2024-03-24 222630.png" />
+            <img src="Screenshot 2024-03-26 132832.png" />
+            <img src="Screenshot 2024-03-24 232543.png" />
+          </div>
           <p>
             As it can be noticed by looking at the graphs, in the generated
             models the validation curve for CER (Character Error Rate) is
@@ -242,10 +258,45 @@
             languages. Moreover, from Manus Online we discovered which other
             manuscripts Biancolino transcribed both in Italian and Latin. Having
             discovered this, we can now estimate that the model could be reused
-            for transcribing seven more manuscripts
+            for transcribing seven more manuscripts.
           </p>
-          <img src="1.png">
-          <img src="3.png">
+          <div class="container1">
+            <div class="service_container">
+              <p>
+                The Character Error Rate (CER) value for this model is
+                <b>7.50%</b> with a training set size of 9674. <br />
+                The image instead represents the comparison which highlighted a
+                CER of 11.26% between the ground truth transcription and the
+                predicted one by the model.
+              </p>
+            </div>
+            <div class="service_container">
+              <img src="1.png" />
+              <figcaption>
+                Comparison between the model’s prediction and the ground truth
+                (pag.88).
+              </figcaption>
+            </div>
+          </div>
+          <div class="container1">
+            <div class="service_container">
+              <p>
+                Both from the comparison and this latest test we noticed that
+                the model is not so efficient when it comes to abbreviations,
+                and in particular words that are written without whitespaces
+                among them. Moreover, we noticed a few minor errors that
+                occurred frequently: the transformation of the first letter from
+                capital letter to lowercase; missing punctuation, in particular
+                stress marks and apostrophe.
+              </p>
+            </div>
+            <div class="service_container">
+              <img src="3.png" />
+              <figcaption>
+                How the model behaves on an unseen text, page taken from Ms.139.
+              </figcaption>
+            </div>
+          </div>
         </div>
         <div class="a">
           <h5>Model2</h5>
@@ -257,8 +308,29 @@
             However, since the name of the copyist is unknown in this case, we
             cannot determine the extent to which this model can be further
             reused.
-            <img src="2.png">
           </p>
+          <div class="container1">
+            <div class="service_container">
+              <p>
+                We also used Transkribus Expert to compute the comparison
+                between the two examples and the CER was 18.10%. From this
+                example we can notice that the main errors occur in cases of
+                abbreviations (see the introduction to the letter) and sometimes
+                prepositions and words that do not possess whitespace between
+                them are not separated by the model. In general, this model can
+                be considered as a good starting point for a transcription,
+                while it needs further refinement manually in order to get to
+                the complete correct result.
+              </p>
+            </div>
+            <div class="service_container">
+              <img src="2.png" />
+              <figcaption>
+                Comparison between the model’s prediction and the ground truth
+                (p.43).
+              </figcaption>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -270,6 +342,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-7 col-md-9 mx-auto">
+            <p>This website is published under the MIT license, the documents' images are published with the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 DEED</a> license.</p>
             <p>&copy; 2024 Erica Andreose and Giorgia Crosilla</p>
           </div>
         </div>
