@@ -332,7 +332,7 @@ a:focus {
 }
 
 #s1 {
-  height: 40vh;
+  height: 40vh !important;
   
 }
 .service_section .service_container {
@@ -458,17 +458,6 @@ figcaption {
   margin-bottom:2%;
 }
 
-#containerimg {
-  display: flex;
-  flex-direction: row;
-  margin:3% 0;
-  justify-content: space-evenly;
-}
-
-#containerimg img {
-  height: 400px;
-  float: unset;
-}
 
 .about_section .img_container .img-box {
   border: 5px solid #7b57b2;
@@ -756,5 +745,17 @@ figcaption {
 
 .footer_section p a {
   color: #222222;
+}
+
+#containerimg {
+  display: flex;
+  flex-direction: row;
+  margin:3% 0;
+  justify-content: space-evenly;
+}
+
+#containerimg img {
+  height: 400px;
+  float: unset;
 }
 /*# sourceMappingURL=style.css.map */
