@@ -77,6 +77,7 @@ body {
 
 .header_section .container {
   padding: 0;
+
 }
 
 .header_section .nav_container {
@@ -302,13 +303,25 @@ a:focus {
 }
 
 .service_section {
-  text-align: center;
+  text-align: left;
 }
 
 .service_section .heading_container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
 }
 
 .service_section .service_container {
@@ -321,6 +334,10 @@ a:focus {
   padding: 35px 0;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.service_container img {
+  height: 400px;
 }
 
 .service_section .service_container .box {
