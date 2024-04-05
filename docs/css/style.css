@@ -332,7 +332,7 @@ a:focus {
 }
 
 .s1 {
-  height: 40vh !important;
+  height: 40vh ;
   
 }
 .service_section .service_container {
