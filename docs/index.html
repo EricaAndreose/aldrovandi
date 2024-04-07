@@ -115,9 +115,11 @@
           <div class="service_container">
             <p>
               One of the main manuscript funds possessed by the University of
-              Bologna is the one of <a href="https://it.wikipedia.org/wiki/Ulisse_Aldrovandi">Ulisse Aldrovandi</a>, a famous naturalist who
-              lived in the 16th century and who is considered to be the father
-              of natural history studies. <br />
+              Bologna is the one of
+              <a href="https://it.wikipedia.org/wiki/Ulisse_Aldrovandi"
+                >Ulisse Aldrovandi</a
+              >, a famous naturalist who lived in the 16th century and who is
+              considered to be the father of natural history studies. <br />
               Prof. Monica Azzolini, one of the main experts of Aldrovandi
               manuscripts at the University of Bologna, expressed the need for
               automatic transcription in order to speed up the process for the
@@ -206,73 +208,103 @@
         </div>
         <div class="a">
           <p>
-            All the images used for training the model have been downloaded from
-            the IIIF manifest, setting the image quality to maximum. Then, we
-            annotated manually the training and validation set, taking care, in
-            particular, of the abbreviations used by the copyists. For all the
-            documents we used the automatic layout recognizer
-            <b>“Universal Lines”</b>
-            that gave us a good starting point even though it needed some manual
-            corrections. In particular, we noticed that the lines were not
-            correctly recognized in the “signature” part of the letters, and the
-            page layout did not include page numbers or cross-reference marks.
+            The dataset of images regarding Calzolari’s letters was downloaded
+            directly from the IIIF manifest stored in AMS Historica, setting the
+            image quality to maximum. On the other hand, we asked directly to
+            the person in charge of digitization at University of Bologna for
+            the images related to Manuscript 99, since it is still in the
+            process of being digitized by an external company. When even this
+            manuscript will be uploaded, then the download will be freely
+            available using the IIIF manifest as well. In order to get good
+            samples we did not consider pages that were slightly damaged and in
+            which ink bleed was present. Moreover, we did not consider pages
+            with complex layouts or in which there were lots of missing
+            annotated words in the transcription. <br />In our case, the ground
+            truth needed to provide input to the supervised machine
+            learning-based model PYLaia HTR is represented by transcriptions
+            done by experts in the field. The transcriptions used here were
+            already available on the web; both of them presented expanded
+            abbreviations even though they were originally abbreviated in the
+            manuscript. <br />Considering all of these aspects, we defined which
+            goals the model should achieve:
           </p>
-          <div class="containerimg1">
-            <figure>
-              <img src="crossref_mark.png" class="one" />
-              <figcaption>Cross-reference of the next page</figcaption>
-            </figure>
-            <figure>
-              <img src="pagenumb.png" class="two"/>
-              <figcaption>Page number (usally top left)</figcaption>
-            </figure>
-            <figure>
-              <img src="signature.png" class="three"/>
-              <figcaption>Signature of the letters</figcaption>
-            </figure>
-          </div>
-          <p>
-            After having prepared our documents, we trained the models using as
-            a base the already existing
-            <b>“Italian Administrative Hands 1550-1700”</b>
-            and tuning some parameters using the additional features of
-            Transkribus Expert. In particular we noticed that keeping the
-            standard batch size used by Transkribus (24) was not effective at
-            all, so for all the processes we chose to diminish it to 4 and saw a
-            great improvement in performance. We chose to diminish the number of
-            epochs to 100 because we were dealing with a smaller number of words
-            and our models were already relying on a starting one.
-          </p>
+          <ul>
+            <li>
+              For all the documents we used the automatic layout recognizer
+              <b>“Universal Lines”</b>
+              that gave us a good starting point even though it needed some
+              manual corrections. In particular, we noticed that the lines were
+              not correctly recognized in the “signature” part of the letters,
+              and the page layout did not include page numbers or
+              cross-reference marks.
+            </li>
+            <div class="containerimg1">
+              <figure>
+                <img src="crossref_mark.png" class="one" />
+                <figcaption>Cross-reference of the next page</figcaption>
+              </figure>
+              <figure>
+                <img src="pagenumb.png" class="two" />
+                <figcaption>Page number (usally top left)</figcaption>
+              </figure>
+              <figure>
+                <img src="signature.png" class="three" />
+                <figcaption>Signature of the letters</figcaption>
+              </figure>
+            </div>
+            <li>
+              After having prepared our documents, we trained the models using
+              as a base the already existing
+              <b>“Italian Administrative Hands 1550-1700”</b>
+              and tuning some parameters using the additional features of
+              Transkribus Expert. In particular we noticed that keeping the
+              standard batch size used by Transkribus (24) was not effective at
+              all, so for all the processes we chose to diminish it to 4 and saw
+              a great improvement in performance. We chose to diminish the
+              number of epochs to 100 because we were dealing with a smaller
+              number of words and our models were already relying on a starting
+              one.
+            </li>
+          </ul>
           <div class="containerimg">
             <img src="Screenshot 2024-03-24 222630.png" />
             <img src="Screenshot 2024-03-26 132832.png" />
             <img src="Screenshot 2024-03-24 232543.png" />
           </div>
           <p>
-            As it can be noticed by looking at the graphs, in the generated
-            models the validation curve for CER (Character Error Rate) is
+            The graphs showcase the learning curves of both the training and
+            validation set, which represent how much the Character Error Rate
+            value is diminishing over the epochs. Generally speaking, if CER is
+            over 10% the transcriptions are not so accurate because they provide
+            a model that requires lots of manual corrections. For this reason, a
+            trial and error approach has been fundamental to get to these
+            results which are the best we could achieve given our dataset, while
+            adjusting the parameter values. As it can be noticed by looking at
+            the graphs, in the generated models the validation curve for CER is
             slightly higher than the other. This may indicate overfitting,
             suggesting that by reducing the batch size, the model has closely
             memorized the training data but struggles to generalize effectively
             to unseen data. In order to prevent this phenomenon from happening,
-            a bigger dataset is surely needed along with fine tuning the correct
-            parameters by a trial and error approach.
+            a bigger dataset is surely needed along with tuning the correct
+            parameters.
           </p>
         </div>
         <div class="a">
-          <h5>Model1</h5>
+          <h5>BiancolinusHandwriting</h5>
           <p>
             The first model was trained on the handwriting of Andrea Biancolino,
             one of the most prolific Aldrovandi’s copyists and one of the few
             that has signed some documents. We used as ground truth for
-            annotation the Manuscript 99, because it was the only manuscript
-            that already possessed a complete transcription. The ms. is mainly
-            written in Italian but some parts, mainly quotes, are written in
-            Latin, as a consequence the model created ideally transcribes both
-            languages. Moreover, from Manus Online we discovered which other
-            manuscripts Biancolino transcribed both in Italian and Latin. Having
-            discovered this, we can now estimate that the model could be reused
-            for transcribing seven more manuscripts.
+            annotation the Manuscript 99, composed of 90 pages, because it was
+            the only one that already possessed a complete transcription. The
+            manuscript is mainly written in Italian but some parts, mainly
+            quotes, are written in Latin, as a consequence the model created
+            ideally transcribes both languages. Moreover, thanks to Manus Online
+            we discovered which other manuscripts Biancolino transcribed both in
+            Italian and Latin. Having discovered this, we can now estimate that
+            the model could be reused for transcribing seven more manuscripts.
+            The Character Error Rate (CER) value for this model is 7.50% with a
+            training set size of 9674 words.
           </p>
           <div class="container1">
             <div class="service_container">
@@ -313,28 +345,31 @@
           </div>
         </div>
         <div class="a">
-          <h5>Model2</h5>
+          <h5>CalzolariHandwriting</h5>
           <p>
             The second model was trained on the handwriting of another anonymous
             copyist. We made this choice because we had a substantial number of
             already transcribed pages from Francesco Calzolari's letters
-            available on “Teatro della Natura di Ulisse Aldrovandi” portal.
-            However, since the name of the copyist is unknown in this case, we
-            cannot determine the extent to which this model can be further
-            reused.
+            available on “Teatro della Natura di Ulisse Aldrovandi” portal. The
+            manuscript examined is 38/2.3 present in IIIF format on AMS
+            Historica. We focused on the correspondence 26r-72v, Verona, 1554,
+            containing Calzolari letters. However, since the name of the copyist
+            is unknown in this case, we cannot determine to which extent this
+            model can be further reused. The Character Error Rate (CER) value
+            for this model is 16% with a training set size of 10565 words.
           </p>
           <div class="container1">
             <div class="service_container">
               <p>
                 We also used Transkribus Expert to compute the comparison
-                between the two examples and the CER was 18.10%. From this
-                example we can notice that the main errors occur in cases of
-                abbreviations (see the introduction to the letter) and sometimes
-                prepositions and words that do not possess whitespace between
-                them are not separated by the model. In general, this model can
-                be considered as a good starting point for a transcription,
-                while it needs further refinement manually in order to get to
-                the complete correct result.
+                between the two examples and the CER was 18.10%. The main errors
+                appear to be similar to those of Model 1: abbreviations are not
+                correctly recognized and sometimes prepositions and words that
+                do not possess whitespace between them are not separated by the
+                model. In general, this model can be considered as a good
+                starting point for a transcription, while it needs further
+                manual refinement in order to get to the complete correct
+                result.
               </p>
             </div>
             <div class="service_container">
@@ -348,6 +383,35 @@
         </div>
       </div>
     </section>
+    <section class="blog_section layout_padding" id="site">
+      <div class="container">
+        <div class="heading_container">
+          <h2>Transkribus sites</h2>
+        </div>
+        <div class="containerimg1">
+          <img src="Screenshot 2024-04-07 183942.png" class="b">
+          <img src="Screenshot 2024-04-07 184010.png" class="b">
+        </div>
+      </div>
+    </section>
+    <section class="blog_section layout_padding" id="conclusions">
+      <div class="container">
+        <div class="heading_container">
+          <h2>Conclusion</h2>
+        </div>
+        <div class="a">
+          <p>
+            Both models can be considered as a good starting point and can serve
+            as useful tools for scholars to speed up transcription tasks. The
+            next step is to use these models to create more "ground truth"
+            documents, which will expand the training data and further improve
+            the models. We see this work as an initial attempt to automate the
+            transcription of Ulisse Aldrovandi's documents, with opportunities
+            for future development.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- end info section -->
 
@@ -356,7 +420,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-7 col-md-9 mx-auto">
-            <p>This website is published under the MIT license, the documents' images are published with the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0 DEED</a> license.</p>
+            <p>
+              This website is published under the MIT license, the documents'
+              images are published with the
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+                >CC BY-NC-ND 4.0 DEED</a
+              >
+              license.
+            </p>
             <p>&copy; 2024 Erica Andreose and Giorgia Crosilla</p>
           </div>
         </div>
