@@ -123,18 +123,23 @@
               Prof. Monica Azzolini, one of the main experts of Aldrovandi
               manuscripts at the University of Bologna, expressed the need for
               automatic transcription in order to speed up the process for the
-              on-going project of Edizione Nazionale Aldrovandi. In particular,
-              she asked for an automatic transcription of Aldrovandi’s own
-              handwriting, but since there is no existing annotation on those
-              documents, we opted to train two models on two different hands
-              that are frequently found in the collection of manuscripts.
-              <br />Aldrovandi’s manuscripts have been progressively uploaded on
-              the digital library of the university AMS Historica using IIIF,
-              while a census of the whole collection of manuscripts is available
-              on Manus Online. In 2001, a web portal containing the
-              transcription of some letters was published: here we can find the
-              mere transcription in txt, but not the direct comparison with the
-              original page.
+              on-going project of <i>Edizione Nazionale Aldrovandi</i>. In
+              particular, she asked for an automatic transcription of
+              Aldrovandi’s own handwriting, but since there is no existing
+              annotation on those documents, we opted to train two models on two
+              different hands that are frequently found in the collection of
+              manuscripts. <br />Aldrovandi’s manuscripts have been
+              progressively uploaded on the digital library of the university
+              AMS Historica using IIIF, while a census of the whole collection
+              of manuscripts is available on Manus Online. In 2001, a web portal
+              containing the transcription of some letters was published: here
+              we can find the mere transcription in txt, but not the direct
+              comparison with the original page. <br />
+              Taking all these factors into account, we have decided to work on
+              creating two models based on the hands of two different copyists,
+              selecting those for which we had the most data available.
+              Additionally, we have developed a prototype digital library using
+              the "sites" feature of Transkribus.
             </p>
           </div>
           <div class="service_container">
@@ -208,25 +213,34 @@
         </div>
         <div class="a">
           <p>
-            The dataset of images regarding Calzolari’s letters was downloaded
-            directly from the IIIF manifest stored in AMS Historica, setting the
-            image quality to maximum. On the other hand, we asked directly to
-            the person in charge of digitization at University of Bologna for
-            the images related to Manuscript 99, since it is still in the
-            process of being digitized by an external company. When even this
-            manuscript will be uploaded, then the download will be freely
-            available using the IIIF manifest as well. In order to get good
-            samples we did not consider pages that were slightly damaged and in
-            which ink bleed was present. Moreover, we did not consider pages
-            with complex layouts or in which there were lots of missing
-            annotated words in the transcription. <br />In our case, the ground
-            truth needed to provide input to the supervised machine
-            learning-based model PYLaia HTR is represented by transcriptions
-            done by experts in the field. The transcriptions used here were
-            already available on the web; both of them presented expanded
-            abbreviations even though they were originally abbreviated in the
-            manuscript. <br />Considering all of these aspects, we defined which
-            goals the model should achieve:
+            The dataset of images regarding Calzolari’s letters was downloaded,
+            through a request to the IIIF Image API, directly from the IIIF
+            manifest stored in AMS Historica, setting the image quality to
+            maximum. On the other hand, we asked directly to the person in
+            charge of digitization at University of Bologna for the images
+            related to Manuscript 99, since it is still in the process of being
+            digitized by an external company. In order to get good samples we
+            did not consider pages that were slightly damaged and in which ink
+            bleed was present. Moreover, we did not consider pages with complex
+            layouts or in which there were lots of missing annotated words in
+            the transcription. <br />In our case, the ground truth needed to
+            provide input to the supervised machine learning-based model PYLaia
+            HTR is represented by transcriptions done by experts in the field.
+            The transcriptions used here were already available on the web; both
+            of them presented expanded abbreviations even though they were
+            originally abbreviated in the manuscript. <br />Considering all of
+            these aspects, we defined which goals the model should achieve:
+          </p>
+          <ul>
+            <li>automatically recognize text and layout;</li>
+            <li>
+              automatically recognize abbreviations and the correspondent
+              word(s).
+            </li>
+          </ul>
+          <p>
+            In order to achieve an automatic recognition of text and layout, we
+            relied on previously trained models:
           </p>
           <ul>
             <li>
@@ -291,7 +305,7 @@
         </div>
         <div class="a">
           <h5>BiancolinusHandwriting</h5>
-          <br>
+          <br />
           <p>
             The first model was trained on the handwriting of Andrea Biancolino,
             one of the most prolific Aldrovandi’s copyists and one of the few
@@ -318,7 +332,7 @@
               </p>
             </div>
             <div class="service_container">
-              <img src="1.png" />
+              <img src="2.png" />
               <figcaption>
                 Comparison between the model’s prediction and the ground truth
                 (pag.88).
@@ -347,7 +361,7 @@
         </div>
         <div class="a">
           <h5>CalzolariHandwriting</h5>
-          <br>
+          <br />
           <p>
             The second model was trained on the handwriting of another anonymous
             copyist. We made this choice because we had a substantial number of
@@ -375,7 +389,7 @@
               </p>
             </div>
             <div class="service_container">
-              <img src="2.png" />
+              <img src="1.png" />
               <figcaption>
                 Comparison between the model’s prediction and the ground truth
                 (p.43).
@@ -391,8 +405,8 @@
           <h2>Transkribus sites</h2>
         </div>
         <div class="containerimg1">
-          <img src="Screenshot 2024-04-07 183942.png" class="b">
-          <img src="Screenshot 2024-04-07 184010.png" class="b">
+          <img src="Screenshot 2024-04-07 183942.png" class="b" />
+          <img src="Screenshot 2024-04-07 184010.png" class="b" />
         </div>
       </div>
     </section>
@@ -423,7 +437,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-9 mx-auto">
             <p>
-              This website is published under the MIT license, the documents'
+              This website is published under the MIT license, the manuscripts'
               images are published with the
               <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
                 >CC BY-NC-ND 4.0 DEED</a
