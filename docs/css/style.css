@@ -4,6 +4,7 @@
 }
 body {
   font-family: cinque;
+  font-size: 1.1em;
   color: #0c0c0c;
   background-color: #f4f2ef;
 }
@@ -391,6 +392,8 @@ a:focus {
   font-weight: 600;
   position: relative;
 }
+
+
 
 .service_section .service_container .box:hover,
 .service_section .service_container .box.active {
