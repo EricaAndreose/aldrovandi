@@ -774,17 +774,17 @@ figcaption {
   justify-content: space-evenly;
 }
 
-#one{
-  width: 14vw;
-  height: 10vw;
+.one{
+  width: 14vw !important;
+  height: 10vw !important;
 }
 
-#two{
-  width: 14vw;
-  height: 10vw;
+.two{
+  width: 14vw !important;
+  height: 10vw !important;
 }
 
-#three{
-  width: 30vw;
-  height: 10vw;
+.three{
+  width: 30vw !important;
+  height: 10vw !important;
 }
